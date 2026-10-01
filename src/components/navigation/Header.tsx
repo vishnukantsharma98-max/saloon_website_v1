@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { serviceCategories } from '../../data/services';
 import { useBooking } from '../../context/BookingContext';
+import { businessConfig } from '../../data/business';
 import {
   MessageCircle,
   Scissors,
@@ -74,11 +75,15 @@ export const Header: React.FC<HeaderProps> = () => {
               }}
               className="group flex items-center gap-2 focus:outline-none shrink-0 cursor-pointer"
             >
-              <span className="font-serif text-2xl sm:text-3xl tracking-[0.2em] font-bold text-[#18181B] group-hover:text-[#9A7B38] transition-colors">
-                LUMÉA
-              </span>
-              <span className="text-[10px] uppercase tracking-widest font-semibold text-[#9A7B38] bg-[#FDF8EE] px-2 py-0.5 rounded-full border border-[#E9DFCE] hidden sm:inline-block">
-                Salon & Spa
+              <img
+                src="https://i.postimg.cc/0jSmd76C/34567890.png"
+                alt="PERFECT SHINE UNISEX SALON"
+                className="h-14 sm:h-18 w-auto object-contain drop-shadow-xs"
+                loading="eager"
+                referrerPolicy="no-referrer"
+              />
+              <span className="font-serif text-lg sm:text-xl tracking-wide font-black text-[#18181B] group-hover:text-[#D61C4E] transition-colors">
+                {businessConfig.brandMark}
               </span>
             </button>
 

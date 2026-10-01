@@ -23,19 +23,51 @@ interface PopularServiceItem {
 const POPULAR_SERVICES: PopularServiceItem[] = [
   {
     id: 'pop-haircut',
-    serviceId: 'srv-haircut-director',
-    name: 'Hair Cut & Style',
+    serviceId: 'srv-haircut-women',
+    name: 'Hair Cut & Blowdry',
     imageUrl: ASSET_MAP['hair-01'].url,
     gender: 'women',
     categoryId: 'haircut',
   },
   {
-    id: 'pop-hairwash',
-    serviceId: 'srv-hair-wash',
-    name: 'Hair Wash & Scalp Detox',
-    imageUrl: ASSET_MAP['interior-01'].url,
+    id: 'pop-rebonding',
+    serviceId: 'srv-hair-rebonding-women',
+    name: 'Permanent Hair Rebonding',
+    imageUrl: 'https://i.postimg.cc/6pG4xWj3/shop-image.jpg',
     gender: 'women',
-    categoryId: 'hair-wash',
+    categoryId: 'rebonding',
+  },
+  {
+    id: 'pop-keratin',
+    serviceId: 'srv-keratin-women',
+    name: 'Keratin Protein Smoothing',
+    imageUrl: ASSET_MAP['hair-03'].url,
+    gender: 'women',
+    categoryId: 'keratin',
+  },
+  {
+    id: 'pop-makeup',
+    serviceId: 'srv-bridal-makeup',
+    name: 'Bridal & Party Makeup',
+    imageUrl: ASSET_MAP['makeup-01'].url,
+    gender: 'women',
+    categoryId: 'makeup',
+  },
+  {
+    id: 'pop-nail-art',
+    serviceId: 'srv-nail-art-gel',
+    name: 'Designer Nail Art & Gel',
+    imageUrl: ASSET_MAP['nails-01'].url,
+    gender: 'women',
+    categoryId: 'nail-art',
+  },
+  {
+    id: 'pop-hair-spa',
+    serviceId: 'srv-hair-spa-deep',
+    name: 'L’Oréal Deep Hair Spa',
+    imageUrl: ASSET_MAP['interior-02'].url,
+    gender: 'women',
+    categoryId: 'treatments',
   },
   {
     id: 'pop-grooming',
@@ -46,45 +78,30 @@ const POPULAR_SERVICES: PopularServiceItem[] = [
     categoryId: 'beard',
   },
   {
-    id: 'pop-massage',
-    serviceId: 'srv-cure-treatment',
-    name: 'Head & Shoulder Massage',
-    imageUrl: ASSET_MAP['interior-02'].url,
-    gender: 'women',
-    categoryId: 'treatments',
-  },
-  {
     id: 'pop-colour',
     serviceId: 'srv-global-colour',
-    name: 'Hair Color & Gloss',
+    name: 'Global Hair Colour',
     imageUrl: ASSET_MAP['hair-02'].url,
     gender: 'women',
     categoryId: 'colour',
-  },
-  {
-    id: 'pop-facial',
-    serviceId: 'srv-womens-hydra-facial',
-    name: 'Hydra-Glow Facial',
-    imageUrl: ASSET_MAP['beauty-02'].url,
-    gender: 'women',
-    categoryId: 'treatments',
   },
 ];
 
 export const PopularServicesSlider: React.FC = () => {
   const { toggleService, isServiceSelected, setIsTimeModalOpen } = useBooking();
   const scrollRef = useRef<HTMLDivElement>(null);
+  const isHoveredRef = useRef<boolean>(false);
 
-  // Keep moving continuously without stopping on hover
+  // Buttery-smooth continuous scrolling with pause-on-hover capability
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
 
     let animationFrameId: number;
-    const speed = 0.8;
+    const speed = 0.75;
 
     const step = () => {
-      if (el) {
+      if (el && !isHoveredRef.current) {
         el.scrollLeft += speed;
         if (el.scrollLeft >= el.scrollWidth / 2) {
           el.scrollLeft = 0;
@@ -161,7 +178,9 @@ export const PopularServicesSlider: React.FC = () => {
         {/* Continuous auto-sliding cards (No prices, bullet clutter removed) */}
         <div
           ref={scrollRef}
-          className="flex items-stretch gap-3.5 sm:gap-4 overflow-x-auto pb-2 pt-1 no-scrollbar"
+          onMouseEnter={() => { isHoveredRef.current = true; }}
+          onMouseLeave={() => { isHoveredRef.current = false; }}
+          className="flex items-stretch gap-3.5 sm:gap-4 overflow-x-auto pb-3 pt-1 no-scrollbar transform-gpu"
         >
           {[...POPULAR_SERVICES, ...POPULAR_SERVICES, ...POPULAR_SERVICES].map((item, index) => {
             const isAdded = isServiceSelected(item.serviceId);
@@ -169,7 +188,7 @@ export const PopularServicesSlider: React.FC = () => {
             return (
               <div
                 key={`${item.id}-${index}`}
-                className="group w-[200px] sm:w-[220px] rounded-3xl overflow-hidden bg-white border border-stone-200/90 shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col justify-between shrink-0"
+                className="group w-[200px] sm:w-[220px] rounded-3xl overflow-hidden bg-white border border-stone-200/90 shadow-2xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between shrink-0"
               >
                 {/* 1. Thumbnail Image */}
                 <div className="relative h-28 sm:h-30 w-full overflow-hidden bg-stone-100">

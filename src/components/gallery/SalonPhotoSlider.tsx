@@ -14,34 +14,49 @@ interface GalleryCardItem {
 
 const SALON_GALLERY_ITEMS: GalleryCardItem[] = [
   {
-    id: 'gal-1',
-    title: 'Master Styling & Foils',
-    imageUrl: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80',
+    id: 'real-shop-front',
+    title: 'Perfect Shine Unisex Salon Front',
+    imageUrl: 'https://i.postimg.cc/6pG4xWj3/shop-image.jpg',
   },
   {
-    id: 'gal-2',
-    title: 'L’Oréal Paris Award',
-    imageUrl: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80',
+    id: 'jd-gal-1',
+    title: 'Styling & Cutting Stations',
+    imageUrl: 'https://images.jdmagicbox.com/comp/ajmer/v7/9999px145.x145.221231205227.h8v7/catalogue/perfect-shine-unisex-salon-railway-quarters-ajmer-beauty-parlours-vqnb3dz0h4.jpg',
   },
   {
-    id: 'gal-3',
-    title: 'Balayage Before & After',
-    imageUrl: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80',
+    id: 'jd-gal-2',
+    title: 'Hair Spa & Rejuvenation Area',
+    imageUrl: 'https://images.jdmagicbox.com/comp/ajmer/v7/9999px145.x145.221231205227.h8v7/catalogue/perfect-shine-unisex-salon-railway-quarters-ajmer-beauty-parlours-ok5y3ifmoz.jpg',
   },
   {
-    id: 'gal-4',
-    title: 'Bridal Glam Makeup',
-    imageUrl: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80',
+    id: 'real-award-4',
+    title: 'L’Oréal Professional Award Winner',
+    imageUrl: 'https://i.postimg.cc/FzhxCdNw/owner-receiving-award-from-loreal.jpg',
   },
   {
-    id: 'gal-5',
-    title: 'Studio Interior Stations',
-    imageUrl: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80',
+    id: 'jd-gal-5',
+    title: 'Wash & Conditioning Suite',
+    imageUrl: 'https://images.jdmagicbox.com/v2/comp/ajmer/v7/9999px145.x145.221231205227.h8v7/catalogue/perfect-shine-unisex-salon-railway-quarters-ajmer-beauty-parlours-iw9t0bo6tb.jpg',
   },
   {
-    id: 'gal-6',
-    title: 'Precision Scissor Fade',
-    imageUrl: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=800&q=80',
+    id: 'real-station-6',
+    title: 'Master Styling Station',
+    imageUrl: 'https://i.postimg.cc/Dfc6JgcK/1.jpg',
+  },
+  {
+    id: 'jd-gal-7',
+    title: 'Warm Illuminated Interior',
+    imageUrl: 'https://images.jdmagicbox.com/comp/ajmer/v7/9999px145.x145.221231205227.h8v7/catalogue/perfect-shine-unisex-salon-railway-quarters-ajmer-beauty-parlours-yco7b0kpn3.jpg',
+  },
+  {
+    id: 'jd-gal-3',
+    title: 'Modern Salon Ambience',
+    imageUrl: 'https://images.jdmagicbox.com/v2/comp/ajmer/v7/9999px145.x145.221231205227.h8v7/catalogue/perfect-shine-unisex-salon-railway-quarters-ajmer-beauty-parlours-i81iol479m.jpg',
+  },
+  {
+    id: 'jd-gal-4',
+    title: 'Premium Styling Chairs',
+    imageUrl: 'https://images.jdmagicbox.com/v2/comp/ajmer/v7/9999px145.x145.221231205227.h8v7/catalogue/perfect-shine-unisex-salon-railway-quarters-ajmer-beauty-parlours-0aaedvrnfp.jpg',
   },
 ];
 
@@ -120,6 +135,7 @@ export const SalonPhotoSlider: React.FC = () => {
                 src={item.imageUrl}
                 alt={item.title}
                 loading="lazy"
+                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
 

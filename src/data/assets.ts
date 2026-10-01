@@ -115,4 +115,38 @@ export const ASSET_MAP: Record<string, { url: string; alt: string }> = {
     url: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1200&q=85',
     alt: 'Master traditional razor shave and hot towel beard conditioning',
   },
+
+  // Salon Studio & Catalogue Shots
+  'salon-real-01': {
+    url: 'https://images.jdmagicbox.com/comp/ajmer/v7/9999px145.x145.221231205227.h8v7/catalogue/perfect-shine-unisex-salon-railway-quarters-ajmer-beauty-parlours-vqnb3dz0h4.jpg',
+    alt: 'Luméa Salon Styling & Cutting Stations',
+  },
+  'salon-real-02': {
+    url: 'https://images.jdmagicbox.com/comp/ajmer/v7/9999px145.x145.221231205227.h8v7/catalogue/perfect-shine-unisex-salon-railway-quarters-ajmer-beauty-parlours-ok5y3ifmoz.jpg',
+    alt: 'Hair Spa & Rejuvenation Area',
+  },
+  'salon-real-03': {
+    url: 'https://images.jdmagicbox.com/v2/comp/ajmer/v7/9999px145.x145.221231205227.h8v7/catalogue/perfect-shine-unisex-salon-railway-quarters-ajmer-beauty-parlours-i81iol479m.jpg',
+    alt: 'Modern Salon Ambience and Station View',
+  },
+  'salon-real-04': {
+    url: 'https://images.jdmagicbox.com/v2/comp/ajmer/v7/9999px145.x145.221231205227.h8v7/catalogue/perfect-shine-unisex-salon-railway-quarters-ajmer-beauty-parlours-0aaedvrnfp.jpg',
+    alt: 'Premium Styling Chairs and Arched Mirrors',
+  },
+  'salon-real-05': {
+    url: 'https://images.jdmagicbox.com/v2/comp/ajmer/v7/9999px145.x145.221231205227.h8v7/catalogue/perfect-shine-unisex-salon-railway-quarters-ajmer-beauty-parlours-iw9t0bo6tb.jpg',
+    alt: 'Wash & Conditioning Suite',
+  },
+  'salon-real-06': {
+    url: 'https://images.jdmagicbox.com/v2/comp/ajmer/v7/9999px145.x145.221231205227.h8v7/catalogue/perfect-shine-unisex-salon-railway-quarters-ajmer-beauty-parlours-g8uas68dq6.jpg',
+    alt: 'Grooming & Mirror Bay with Ambient Warm Glow',
+  },
+  'salon-real-07': {
+    url: 'https://images.jdmagicbox.com/comp/ajmer/v7/9999px145.x145.221231205227.h8v7/catalogue/perfect-shine-unisex-salon-railway-quarters-ajmer-beauty-parlours-yco7b0kpn3.jpg',
+    alt: 'Warm Illuminated Salon Interior',
+  },
+  'salon-real-08': {
+    url: 'https://images.jdmagicbox.com/comp/ajmer/v7/9999px145.x145.221231205227.h8v7/catalogue/perfect-shine-unisex-salon-railway-quarters-ajmer-beauty-parlours-y0ntykotdm.jpg',
+    alt: 'Salon Reception & Client Lounge',
+  },
 };

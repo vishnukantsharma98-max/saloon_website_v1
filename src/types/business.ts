@@ -54,6 +54,7 @@ export interface BusinessConfig {
   id: string;
   name: string;
   brandMark: string;
+  logoUrl?: string;
   tagline: string;
   shortDescription: string;
   editorialSummary: string;

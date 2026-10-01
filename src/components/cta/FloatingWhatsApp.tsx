@@ -3,20 +3,31 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { businessConfig } from '../../data/business';
 import { useBooking } from '../../context/BookingContext';
 
 export const FloatingWhatsApp: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const { selectedServices } = useBooking();
   const whatsappUrl = `https://wa.me/${businessConfig.contact.whatsappNumber}?text=Hello%20${encodeURIComponent(businessConfig.brandMark)}!%20I%20would%20like%20to%20inquire%20about%20salon%20appointments.`;
+
+  // Subtle fade-in-up entry animation when page loads
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 150);
+    return () => clearTimeout(timer);
+  }, []);
 
   const hasStickyBar = selectedServices.length > 0;
 
   return (
     <aside
       aria-label="Direct WhatsApp Concierge"
-      className={`fixed right-3.5 sm:right-6 z-50 select-none pointer-events-auto transition-all duration-300 ease-out ${
+      className={`fixed right-3.5 sm:right-6 z-50 select-none pointer-events-auto transition-all duration-700 ease-out transform ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6 pointer-events-none'
+      } ${
         hasStickyBar ? 'bottom-32 sm:bottom-24' : 'bottom-18 sm:bottom-6'
       }`}
     >
@@ -24,7 +35,7 @@ export const FloatingWhatsApp: React.FC = () => {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp with Luméa Salon"
+        aria-label={`Chat on WhatsApp with ${businessConfig.brandMark}`}
         className="flex items-center justify-center w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#25D366] hover:bg-[#20ba5a] active:scale-90 text-white shadow-xl shadow-black/20 hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer"
         title="WhatsApp: +91 94614 74764"
       >

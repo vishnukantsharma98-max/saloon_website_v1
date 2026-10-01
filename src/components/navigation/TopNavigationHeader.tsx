@@ -12,8 +12,8 @@ export const TopNavigationHeader: React.FC = () => {
   const { activePage, setActivePage } = useBooking();
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 h-18 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-2xs">
+      <div className="max-w-7xl mx-auto px-3 sm:px-8 py-2 min-h-[76px] sm:min-h-[88px] flex items-center justify-between gap-2 sm:gap-4">
         {/* Brand Logo - Clicking Logo opens Home */}
         <button
           type="button"
@@ -21,11 +21,23 @@ export const TopNavigationHeader: React.FC = () => {
             setActivePage('home');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="flex items-center text-left group cursor-pointer focus:outline-none"
+          className="flex items-center gap-2 sm:gap-3.5 text-left group cursor-pointer focus:outline-none shrink-0"
         >
-          <span className="font-serif text-2xl sm:text-3xl tracking-[0.2em] font-bold text-stone-900 group-hover:text-[#D61C4E] transition-colors">
-            {businessConfig.brandMark}
-          </span>
+          <img
+            src="https://i.postimg.cc/0jSmd76C/34567890.png"
+            alt="PERFECT SHINE UNISEX SALON"
+            className="h-15 sm:h-20 md:h-24 w-auto max-w-[160px] sm:max-w-[220px] object-contain transition-transform group-hover:scale-105 duration-300 drop-shadow-xs shrink-0 select-none"
+            loading="eager"
+            referrerPolicy="no-referrer"
+          />
+          <div className="flex flex-col justify-center">
+            <span className="font-serif text-sm sm:text-lg md:text-xl font-black tracking-wider text-stone-900 group-hover:text-[#D61C4E] transition-colors leading-tight">
+              PERFECT SHINE
+            </span>
+            <span className="text-[9px] sm:text-[10px] md:text-[11px] font-bold uppercase tracking-widest text-[#D61C4E]">
+              UNISEX SALON
+            </span>
+          </div>
         </button>
 
         {/* Desktop Nav Links */}
@@ -77,28 +89,30 @@ export const TopNavigationHeader: React.FC = () => {
         </nav>
 
         {/* Right CTA + Socials */}
-        <div className="flex items-center gap-2.5">
-          <a
-            href={businessConfig.social.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-8 h-8 rounded-full border border-stone-200 text-stone-600 hover:text-[#D61C4E] hover:border-[#D61C4E] flex items-center justify-center transition-colors cursor-pointer"
-            title="Instagram"
-            aria-label="Instagram"
-          >
-            <Instagram className="w-3.5 h-3.5" />
-          </a>
+        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          <div className="hidden sm:flex items-center gap-2">
+            <a
+              href={businessConfig.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 rounded-full border border-stone-200 text-stone-600 hover:text-[#D61C4E] hover:border-[#D61C4E] flex items-center justify-center transition-colors cursor-pointer"
+              title="Instagram"
+              aria-label="Instagram"
+            >
+              <Instagram className="w-3.5 h-3.5" />
+            </a>
 
-          <a
-            href={businessConfig.social.facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-8 h-8 rounded-full border border-stone-200 text-stone-600 hover:text-[#D61C4E] hover:border-[#D61C4E] flex items-center justify-center transition-colors cursor-pointer"
-            title="Facebook"
-            aria-label="Facebook"
-          >
-            <Facebook className="w-3.5 h-3.5" />
-          </a>
+            <a
+              href={businessConfig.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 rounded-full border border-stone-200 text-stone-600 hover:text-[#D61C4E] hover:border-[#D61C4E] flex items-center justify-center transition-colors cursor-pointer"
+              title="Facebook"
+              aria-label="Facebook"
+            >
+              <Facebook className="w-3.5 h-3.5" />
+            </a>
+          </div>
 
           <a
             href="tel:+919461474764"
@@ -114,7 +128,7 @@ export const TopNavigationHeader: React.FC = () => {
               setActivePage('services');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#D61C4E] hover:bg-[#c21443] active:scale-[0.98] text-white shadow-xs transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#D61C4E] hover:bg-[#c21443] active:scale-[0.98] text-white shadow-xs transition-all cursor-pointer shrink-0"
           >
             <Calendar className="w-3.5 h-3.5" />
             <span>Book Now</span>

@@ -46,7 +46,7 @@ export const MobileQuickBar: React.FC<MobileQuickBarProps> = () => {
       </button>
 
       <a
-        href={`https://wa.me/${businessConfig.contact.whatsappNumber}?text=Hello%20LUMÉA!%20I%20would%20like%20to%20inquire%20about%20salon%20appointments.`}
+        href={`https://wa.me/${businessConfig.contact.whatsappNumber}?text=Hello%20${encodeURIComponent(businessConfig.brandMark)}!%20I%20would%20like%20to%20inquire%20about%20salon%20appointments.`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Direct WhatsApp"

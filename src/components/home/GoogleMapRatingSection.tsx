@@ -30,7 +30,7 @@ export const GoogleMapRatingSection: React.FC = () => {
               </h3>
               <div className="flex items-center gap-2 mt-1 justify-center lg:justify-start">
                 <span className="font-bold text-3xl text-stone-900 leading-none">
-                  4.8
+                  4.9
                 </span>
                 <div className="flex items-center text-amber-400">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -46,32 +46,32 @@ export const GoogleMapRatingSection: React.FC = () => {
               rel="noopener noreferrer"
               className="text-xs font-semibold text-stone-700 hover:text-[#D61C4E] underline flex items-center gap-1 transition-colors"
             >
-              <span>See all 530+ Google reviews</span>
+              <span>See all 380+ Google reviews</span>
               <ExternalLink className="w-3 h-3" />
             </a>
           </div>
 
-          {/* Right Column: Google Maps Interactive Card (Matching Image 5) */}
+          {/* Right Column: Google Maps Interactive Card (Ajmer, Rajasthan) */}
           <div className="lg:col-span-8">
             <div className="relative w-full h-[280px] sm:h-[320px] rounded-3xl overflow-hidden border border-stone-200 shadow-md bg-stone-100">
-              {/* Real Google Maps Embed */}
+              {/* Real Google Maps Embed for Ajmer Location */}
               <iframe
                 title="Salon Location Google Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.985537554907!2d77.5960012!3d12.9727402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae16790938f6b5%3A0x8673a5a7536d4df6!2sLavelle%20Road%2C%20Bengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1711900000000!5m2!1sen!2sin"
+                src="https://maps.google.com/maps?q=26.471639,74.607222&hl=en&z=16&output=embed"
                 className="w-full h-full border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
 
-              {/* Overlaid Google Map Info Card matching Image 5 */}
+              {/* Overlaid Google Map Info Card */}
               <div className="absolute top-3 left-3 max-w-[280px] sm:max-w-xs bg-white/95 backdrop-blur-md rounded-2xl p-3.5 shadow-lg border border-stone-200 space-y-1.5 text-xs text-stone-800">
                 <div className="flex items-start justify-between gap-2">
                   <div>
                     <h4 className="font-bold text-sm text-stone-900 leading-tight">
-                      Luméa Salon & Spa
+                      PERFECT SHINE UNISEX SALON
                     </h4>
                     <p className="text-[11px] text-stone-500 mt-0.5 leading-snug">
-                      {businessConfig.location.addressLine1}, {businessConfig.location.city}
+                      S-16, B K Kaul Rd, Gyan Vihar Colony, Ajmer
                     </p>
                   </div>
                   <a
@@ -87,9 +87,9 @@ export const GoogleMapRatingSection: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-1.5 text-[11px] text-stone-600 pt-0.5 border-t border-stone-100">
-                  <span className="font-bold text-stone-900">4.8</span>
+                  <span className="font-bold text-stone-900">4.9</span>
                   <span className="text-amber-500">★★★★★</span>
-                  <span className="text-stone-400 font-medium">531 reviews</span>
+                  <span className="text-stone-400 font-medium">380+ reviews</span>
                 </div>
               </div>
             </div>

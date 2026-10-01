@@ -123,7 +123,7 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
                 Book Your Appointment
               </h2>
               <p className="text-[11px] text-stone-500">
-                Direct reservation with Luméa Studio concierge
+                Direct reservation with {businessConfig.brandMark} concierge
               </p>
             </div>
           </div>

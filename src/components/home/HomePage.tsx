@@ -12,22 +12,23 @@ import { SalonPhotoSlider } from '../gallery/SalonPhotoSlider';
 import { PopularServicesSlider } from './PopularServicesSlider';
 import { MeetOurStylists } from './MeetOurStylists';
 import { GoogleMapRatingSection } from './GoogleMapRatingSection';
+import { GoogleReviewsSlider } from './GoogleReviewsSlider';
 import { ScrollReveal } from '../common/ScrollReveal';
 import { Clock, Instagram, Facebook } from 'lucide-react';
 
 export const HomePage: React.FC = () => {
   const { setActivePage, setActiveCategory, setActiveGender } = useBooking();
 
-  // Circular Categories for Home Page
+  // Circular Categories for Home Page (Matching user-requested core services)
   const homeCategories = [
     { id: 'haircut', label: 'Hair Cut', image: ASSET_MAP['hair-01'].url, gender: 'women' as const },
+    { id: 'rebonding', label: 'Rebonding', image: 'https://i.postimg.cc/6pG4xWj3/shop-image.jpg', gender: 'women' as const },
+    { id: 'keratin', label: 'Keratin', image: ASSET_MAP['hair-03'].url, gender: 'women' as const },
+    { id: 'makeup', label: 'All Makeup', image: ASSET_MAP['makeup-01'].url, gender: 'women' as const },
+    { id: 'nail-art', label: 'Nail Art', image: ASSET_MAP['nails-01'].url, gender: 'women' as const },
+    { id: 'treatments', label: 'Hair Treatment', image: ASSET_MAP['interior-02'].url, gender: 'women' as const },
     { id: 'beard', label: 'Beard & Shave', image: ASSET_MAP['mens-01'].url, gender: 'men' as const },
-    { id: 'hair-wash', label: 'Hair Wash', image: ASSET_MAP['interior-01'].url, gender: 'women' as const },
     { id: 'colour', label: 'Colour', image: ASSET_MAP['hair-02'].url, gender: 'women' as const },
-    { id: 'treatments', label: 'Treatments', image: ASSET_MAP['beauty-02'].url, gender: 'women' as const },
-    { id: 'texture', label: 'Texture', image: ASSET_MAP['hair-03'].url, gender: 'women' as const },
-    { id: 'threading', label: 'Threading', image: ASSET_MAP['beauty-01'].url, gender: 'women' as const },
-    { id: 'manicure', label: 'Manicure', image: ASSET_MAP['nails-01'].url, gender: 'women' as const },
   ];
 
   const handleCategoryClick = (catId: string, gender: 'women' | 'men') => {
@@ -40,7 +41,7 @@ export const HomePage: React.FC = () => {
   return (
     <div className="space-y-4 pb-20">
       {/* 1. HERO BANNER: Staggered Entrance Animation with Framer Motion */}
-      <section className="relative w-full min-h-[440px] sm:min-h-[500px] flex items-center bg-stone-950 text-white overflow-hidden">
+      <section className="relative w-full min-h-[520px] sm:min-h-[540px] md:min-h-[560px] flex items-end md:items-center bg-stone-950 text-white overflow-hidden pb-8 pt-16 md:py-14">
         {/* Animated Background Image: Slides in smoothly from Left */}
         <motion.div
           initial={{ x: -140, opacity: 0 }}
@@ -49,8 +50,8 @@ export const HomePage: React.FC = () => {
           className="absolute inset-0 w-full h-full overflow-hidden"
         >
           {/* Responsive Hero Background:
-              - Desktop: Salon + Barber image with barber visible on right & salon on left
-              - Mobile: Vertical crop focusing on the barber's face & upper body */}
+              - Desktop: Salon + Barber image with stylist face clear on right & text on left
+              - Mobile: Positioned so the stylist's face is at top (76% 8%) and never hidden by text */}
           <picture className="w-full h-full">
             <source
               media="(max-width: 767px)"
@@ -62,8 +63,8 @@ export const HomePage: React.FC = () => {
             />
             <img
               src="/home-screenphoto.png"
-              alt="Luméa Salon & Barber Master Stylist"
-              className="w-full h-full object-cover object-[78%_20%] md:object-[72%_35%] opacity-75 md:opacity-70 animate-hero-zoom transform-gpu will-change-transform scale-105"
+              alt="PERFECT SHINE UNISEX SALON Master Stylist"
+              className="w-full h-full object-cover object-[76%_8%] md:object-[76%_32%] opacity-95 md:opacity-75 md:animate-hero-zoom transform-gpu will-change-transform scale-100 md:scale-105"
               referrerPolicy="no-referrer"
               onError={(e) => {
                 const target = e.currentTarget;
@@ -78,14 +79,14 @@ export const HomePage: React.FC = () => {
           <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-transparent via-white/10 to-transparent animate-light-sweep" />
         </motion.div>
 
-        {/* Subtle Dark Overlay only where necessary for text readability:
-            - Desktop: Dark on left where headline sits, transparent on right so barber is clearly visible
-            - Mobile: Gradient from bottom/left to keep barber in focus while text is legible */}
-        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/92 via-stone-950/50 to-transparent hidden md:block" />
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-950/95 via-stone-950/60 to-stone-950/20 block md:hidden" />
+        {/* Dark Overlay placed specifically to protect face visibility:
+            - Desktop: Left 65% shaded for text, right side 100% transparent so face is bright and completely clear
+            - Mobile: Bottom 45% shaded for text, top 55% transparent so face is never covered */}
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/95 via-stone-950/60 to-transparent to-65% hidden md:block pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/85 via-45% to-transparent to-65% block md:hidden pointer-events-none" />
 
-        {/* Text and Actions: Slides in concurrently from Right with Staggered Children */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 py-14 w-full">
+        {/* Text and Actions: Salon Name is Main Focus with Motto */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 w-full">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -102,28 +103,9 @@ export const HomePage: React.FC = () => {
                 },
               },
             }}
-            className="max-w-xl space-y-4"
+            className="max-w-lg md:max-w-xl space-y-2 sm:space-y-3"
           >
-            <motion.h1
-              variants={{
-                hidden: { x: 50, opacity: 0 },
-                visible: {
-                  x: 0,
-                  opacity: 1,
-                  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-                },
-              }}
-              className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.1]"
-            >
-              <span className="block transform transition-transform hover:translate-x-1 duration-300">
-                Your Beauty.
-              </span>
-              <span className="block bg-gradient-to-r from-white via-rose-100 to-stone-200 bg-clip-text text-transparent transform transition-transform hover:translate-x-1 duration-300">
-                Your Style. Your Confidence.
-              </span>
-            </motion.h1>
-
-            {/* Quick Action Buttons: Staggered with hover interactive glow */}
+            {/* Top Eyebrow */}
             <motion.div
               variants={{
                 hidden: { x: 50, opacity: 0 },
@@ -133,30 +115,85 @@ export const HomePage: React.FC = () => {
                   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
                 },
               }}
-              className="pt-3 flex flex-wrap items-center gap-3"
             >
-              <button
-                type="button"
-                onClick={() => {
-                  setActivePage('services');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className="group relative px-8 py-3.5 rounded-full bg-white hover:bg-stone-100 active:scale-95 text-stone-900 font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl transition-all cursor-pointer hover:shadow-2xl overflow-hidden"
-              >
-                <span className="relative z-10">Book Now</span>
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform" />
-              </button>
+              <span className="inline-block text-[10px] sm:text-xs font-bold tracking-[0.2em] text-rose-300 uppercase bg-black/45 backdrop-blur-md px-3 py-1 rounded-full border border-rose-500/30 shadow-xs">
+                ★ Ajmer’s Premier Unisex Salon
+              </span>
+            </motion.div>
 
-              <button
+            {/* MAIN FOCUS: Salon Name */}
+            <motion.h1
+              variants={{
+                hidden: { x: 50, opacity: 0 },
+                visible: {
+                  x: 0,
+                  opacity: 1,
+                  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+                },
+              }}
+              className="font-serif text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white leading-[1.05] drop-shadow-xl"
+            >
+              <span className="block transform transition-transform hover:translate-x-1 duration-300">
+                PERFECT SHINE
+              </span>
+              <span className="block text-[#D61C4E] sm:text-rose-400 font-sans text-xl sm:text-3xl md:text-4xl font-extrabold tracking-[0.2em] uppercase mt-0.5 sm:mt-1">
+                UNISEX SALON
+              </span>
+            </motion.h1>
+
+            {/* MOTTO / TAGLINE */}
+            <motion.p
+              variants={{
+                hidden: { x: 50, opacity: 0 },
+                visible: {
+                  x: 0,
+                  opacity: 1,
+                  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+                },
+              }}
+              className="font-serif italic text-base sm:text-2xl text-stone-100 drop-shadow-md pt-0.5"
+            >
+              “Your Beauty. Your Style. Your Confidence.”
+            </motion.p>
+
+            {/* Quick Action Buttons with spring hover & click physics */}
+            <motion.div
+              variants={{
+                hidden: { x: 50, opacity: 0 },
+                visible: {
+                  x: 0,
+                  opacity: 1,
+                  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+                },
+              }}
+              className="pt-2 sm:pt-4 flex flex-wrap items-center gap-3.5"
+            >
+              <motion.button
+                whileHover={{ scale: 1.04, boxShadow: '0 20px 25px -5px rgba(214, 28, 78, 0.4)' }}
+                whileTap={{ scale: 0.96 }}
                 type="button"
                 onClick={() => {
                   setActivePage('services');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="px-8 py-3.5 rounded-full bg-transparent hover:bg-white/10 active:scale-95 text-white border border-white/50 font-bold text-xs sm:text-sm uppercase tracking-wider transition-all cursor-pointer backdrop-blur-xs"
+                className="group relative px-7 sm:px-8 py-3.5 rounded-full bg-[#D61C4E] hover:bg-[#c21443] text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl transition-all cursor-pointer overflow-hidden"
               >
-                Services
-              </button>
+                <span className="relative z-10">Book Appointment</span>
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full duration-700 bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform" />
+              </motion.button>
+
+              <motion.button
+                whileHover={{ scale: 1.04, backgroundColor: 'rgba(255, 255, 255, 0.2)' }}
+                whileTap={{ scale: 0.96 }}
+                type="button"
+                onClick={() => {
+                  setActivePage('services');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="px-6 sm:px-7 py-3.5 rounded-full bg-white/10 text-white font-semibold text-xs sm:text-sm backdrop-blur-md border border-white/30 transition-all cursor-pointer"
+              >
+                Explore Services
+              </motion.button>
             </motion.div>
           </motion.div>
         </div>
@@ -191,11 +228,11 @@ export const HomePage: React.FC = () => {
                 onClick={() => handleCategoryClick(cat.id, cat.gender)}
                 className="flex flex-col items-center text-center shrink-0 group cursor-pointer focus:outline-none transition-transform active:scale-95"
               >
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl overflow-hidden p-1 border border-stone-200 bg-stone-50 group-hover:border-[#D61C4E] group-hover:scale-105 transition-all duration-300">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl overflow-hidden p-1 border border-stone-200 bg-stone-50 group-hover:border-[#D61C4E] group-hover:scale-108 group-hover:shadow-lg transition-all duration-300 ease-out">
                   <img
                     src={cat.image}
                     alt={cat.label}
-                    className="w-full h-full object-cover rounded-2xl"
+                    className="w-full h-full object-cover rounded-2xl group-hover:scale-110 transition-transform duration-500 ease-out"
                   />
                 </div>
                 <span className="text-xs font-semibold mt-1.5 text-stone-800 group-hover:text-[#D61C4E] transition-colors">
@@ -233,12 +270,12 @@ export const HomePage: React.FC = () => {
           <div className="p-5 sm:p-6 rounded-3xl bg-white border border-stone-200 shadow-2xs flex items-center justify-between flex-wrap gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-stone-100 text-stone-800 flex items-center justify-center shrink-0">
-                <Clock className="w-5 h-5" />
+                <Clock className="w-5 h-5 text-[#D61C4E]" />
               </div>
               <div>
                 <h4 className="font-serif font-bold text-stone-900 text-base">Studio Hours</h4>
                 <p className="text-xs text-stone-600">
-                  Tue – Sat: 10:00 AM – 8:00 PM · Sun: 11:00 AM – 6:00 PM (Mon Closed)
+                  Monday – Sunday: <strong>10:00 AM – 9:00 PM</strong> (Open All 7 Days)
                 </p>
               </div>
             </div>
@@ -280,6 +317,11 @@ export const HomePage: React.FC = () => {
             </div>
           </div>
         </section>
+      </ScrollReveal>
+
+      {/* 8. CLIENT REVIEWS SLIDER (Authentic Indian Google Reviews) */}
+      <ScrollReveal delayMs={40}>
+        <GoogleReviewsSlider />
       </ScrollReveal>
     </div>
   );

@@ -22,17 +22,26 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-stone-200">
           {/* Brand Column */}
           <div className="space-y-3">
-            <div>
-              <span className="font-serif text-2xl tracking-[0.2em] font-bold text-stone-900 block">
-                {brandMark}
-              </span>
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#D61C4E]">
-                Salon & Spa Atelier
-              </span>
+            <div className="flex items-center gap-3">
+              <img
+                src="https://i.postimg.cc/0jSmd76C/34567890.png"
+                alt="PERFECT SHINE UNISEX SALON"
+                className="h-16 sm:h-20 w-auto object-contain drop-shadow-xs"
+                loading="lazy"
+                referrerPolicy="no-referrer"
+              />
+              <div>
+                <span className="font-serif text-lg font-black tracking-wide text-stone-900 block leading-tight">
+                  PERFECT SHINE
+                </span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#D61C4E]">
+                  UNISEX SALON
+                </span>
+              </div>
             </div>
 
             <p className="text-xs text-stone-600 leading-relaxed max-w-sm">
-              Your Beauty. Your Style. Your Confidence. Dedicated to personal hair couture, clinical skin renewal, and luxury grooming in an unhurried sanctuary.
+              Your Beauty. Your Style. Your Confidence. Ajmer’s trusted unisex destination for precision haircutting, hair rebonding, keratin smoothing, and bridal aesthetics.
             </p>
 
             <div className="pt-1 flex items-center gap-3">
@@ -116,8 +125,8 @@ export const Footer: React.FC = () => {
             <div className="flex items-start gap-2 pt-1">
               <Clock className="w-4 h-4 text-[#D61C4E] shrink-0 mt-0.5" />
               <div>
-                <p>Tue – Sat: 10:00 AM – 8:00 PM</p>
-                <p>Sunday: 11:00 AM – 6:00 PM (Monday Closed)</p>
+                <p>Monday – Sunday: <strong>10:00 AM – 9:00 PM</strong></p>
+                <p className="text-emerald-700 font-semibold">Open All 7 Days</p>
               </div>
             </div>
           </div>
@@ -152,7 +161,7 @@ export const Footer: React.FC = () => {
         {/* Bottom copyright & back to top */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
           <p>
-            © {new Date().getFullYear()} {brandMark} Salon & Spa. All rights reserved.
+            © {new Date().getFullYear()} PERFECT SHINE UNISEX SALON. All rights reserved.
           </p>
 
           <button

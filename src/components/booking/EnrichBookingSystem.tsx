@@ -218,7 +218,7 @@ export const EnrichBookingSystem: React.FC = () => {
               <div className="flex justify-between border-b border-stone-200 pb-2.5">
                 <div>
                   <span className="text-[10px] uppercase font-bold text-stone-400 block">Salon Atelier</span>
-                  <strong className="text-stone-900 font-bold text-sm">Luméa Salon & Spa</strong>
+                  <strong className="text-stone-900 font-bold text-sm">{businessConfig.name}</strong>
                 </div>
                 <div className="text-right">
                   <span className="text-[10px] uppercase font-bold text-emerald-600 block">Status</span>

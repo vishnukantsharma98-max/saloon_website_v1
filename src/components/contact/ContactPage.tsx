@@ -20,7 +20,7 @@ export const ContactPage: React.FC = () => {
     e.preventDefault();
     if (!name.trim()) return;
 
-    const text = `Hello Luméa Salon! My name is ${name}. I am inquiring about ${service}.${phone ? ` Phone: ${phone}.` : ''}${message ? ` Message: ${message}` : ''}`;
+    const text = `Hello ${businessConfig.brandMark}! My name is ${name}. I am inquiring about ${service}.${phone ? ` Phone: ${phone}.` : ''}${message ? ` Message: ${message}` : ''}`;
     const url = `https://wa.me/${businessConfig.contact.whatsappNumber}?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
     setSubmitted(true);
@@ -31,10 +31,10 @@ export const ContactPage: React.FC = () => {
       {/* Header */}
       <div className="text-center max-w-xl mx-auto space-y-2">
         <h1 className="font-serif text-3xl sm:text-5xl font-bold text-stone-900">
-          Contact Us
+          Contact & Location
         </h1>
         <p className="text-xs sm:text-sm text-stone-500">
-          Lavelle Road District, Bengaluru · Mon Closed
+          S-16, B K Kaul Rd, Gyan Vihar Colony, Ajmer · Open All 7 Days (10 AM – 9 PM)
         </p>
       </div>
 
@@ -45,15 +45,15 @@ export const ContactPage: React.FC = () => {
           <div className="p-6 rounded-2xl bg-white border border-stone-200 shadow-2xs space-y-2">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-stone-100 text-stone-800 flex items-center justify-center shrink-0">
-                <MapPin className="w-5 h-5" />
+                <MapPin className="w-5 h-5 text-[#D61C4E]" />
               </div>
               <div>
-                <h3 className="font-serif font-bold text-lg text-stone-900">Atelier Studio</h3>
-                <span className="text-xs text-stone-400">Lavelle Road, Bengaluru</span>
+                <h3 className="font-serif font-bold text-lg text-stone-900">Salon Location</h3>
+                <span className="text-xs text-stone-400">Ajmer, Rajasthan</span>
               </div>
             </div>
             <p className="text-xs text-stone-600 pl-13 leading-relaxed">
-              {businessConfig.location.addressLine1}, {businessConfig.location.addressLine2}, {businessConfig.location.city} - {businessConfig.location.postalCode}
+              {businessConfig.location.addressLine1}, {businessConfig.location.addressLine2}, {businessConfig.location.city} - {businessConfig.location.postalCode}, India
             </p>
             <div className="pl-13 pt-1">
               <a
@@ -67,35 +67,37 @@ export const ContactPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Telephone & WhatsApp */}
+          {/* Telephone & WhatsApp — Clean Single Phone Display */}
           <div className="p-6 rounded-2xl bg-white border border-stone-200 shadow-2xs space-y-3">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-stone-100 text-stone-800 flex items-center justify-center shrink-0">
-                <Phone className="w-5 h-5" />
+                <Phone className="w-5 h-5 text-[#D61C4E]" />
               </div>
               <div>
                 <h3 className="font-serif font-bold text-lg text-stone-900">Direct Phone</h3>
-                <span className="text-xs text-stone-400">+91 94614 74764</span>
+                <span className="text-xs text-stone-400">Call for Appointments & Enquiries</span>
               </div>
             </div>
 
             <div className="pl-13 space-y-2">
               <a
                 href={`tel:${businessConfig.contact.phoneE164}`}
-                className="block text-sm font-bold text-stone-900 hover:text-[#D61C4E] transition-colors"
+                className="inline-block text-base font-bold text-stone-900 hover:text-[#D61C4E] transition-colors"
               >
-                +91 94614 74764
+                {businessConfig.contact.phoneDisplay}
               </a>
 
-              <a
-                href={`https://wa.me/${businessConfig.contact.whatsappNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-300 text-xs font-bold hover:bg-emerald-100 transition-colors"
-              >
-                <MessageCircle className="w-4 h-4 fill-[#25D366] text-[#25D366]" />
-                <span>Chat on WhatsApp</span>
-              </a>
+              <div>
+                <a
+                  href={`https://wa.me/${businessConfig.contact.whatsappNumber}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-300 text-xs font-bold hover:bg-emerald-100 transition-colors"
+                >
+                  <MessageCircle className="w-4 h-4 fill-[#25D366] text-[#25D366]" />
+                  <span>Chat on WhatsApp</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -103,17 +105,16 @@ export const ContactPage: React.FC = () => {
           <div className="p-6 rounded-2xl bg-white border border-stone-200 shadow-2xs space-y-2">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-stone-100 text-stone-800 flex items-center justify-center shrink-0">
-                <Clock className="w-5 h-5" />
+                <Clock className="w-5 h-5 text-[#D61C4E]" />
               </div>
               <div>
                 <h3 className="font-serif font-bold text-lg text-stone-900">Studio Hours</h3>
-                <span className="text-xs text-stone-400">Tue – Sun</span>
+                <span className="text-xs text-emerald-600 font-semibold">Open All 7 Days</span>
               </div>
             </div>
             <div className="pl-13 text-xs text-stone-600 space-y-1">
-              <p>Tuesday – Saturday: <strong>10:00 AM – 8:00 PM</strong></p>
-              <p>Sunday: <strong>11:00 AM – 6:00 PM</strong></p>
-              <p className="text-stone-400">Monday: Closed</p>
+              <p>Monday – Sunday: <strong>10:00 AM – 9:00 PM</strong></p>
+              <p className="text-stone-500">Walk-ins and appointments welcomed</p>
             </div>
           </div>
         </div>
